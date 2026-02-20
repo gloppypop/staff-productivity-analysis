@@ -85,10 +85,52 @@ The following visualizations are generated from the KPI notebook and saved in th
 
 ## Key Insights
 
-- Monthly revenue tracks closely with client hours, confirming that billable productivity drives financial performance.
-- Revenue per client hour remains relatively stable across months, suggesting consistent service mix and billing structure.
-- Revenue dips are primarily driven by lower encounter volume rather than changes in billing rates.
-- This KPI framework provides a structured way to evaluate compensation changes against measurable revenue contribution.
+### 1. Revenue Growth Follows Productivity Gains
+
+Monthly revenue increases significantly beginning mid-2023 and stabilizes through 2024. This mirrors the increase in client hours delivered during the same period. The revenue goal line shows that performance consistently meets or exceeds target once steady productivity levels are reached.
+
+Revenue dips in early and late periods correspond directly with reduced client hours, indicating that financial performance is primarily volume-driven rather than rate-driven during most of the observed period.
+
+---
+
+### 2. Sustained Increase in Client Hours
+
+Client hours show a clear ramp-up from approximately 30–50 hours per month early in the timeline to a sustained 85–105 hour range. This indicates a significant improvement in utilization and schedule density.
+
+The temporary decline in the most recent month corresponds with a drop in revenue and utilization, reinforcing that hours delivered are the main performance driver.
+
+---
+
+### 3. Revenue per Client Hour Reflects Billing Structure Changes
+
+The early spike in revenue per client hour (over $150/hour) is not purely a productivity effect. During that period, services were billed under an older T1012 structure at approximately $50 per encounter. Because multiple encounters could be delivered within a single hour — and those encounters did not accumulate over 15-minute billing intervals — the effective revenue per hour appeared artificially elevated.
+
+After August 2023, billing shifted to a structure based on 15-minute units with cumulative billing rates. Under this model, revenue per hour stabilized in the ~$100–$110 range. This reflects a more consistent and scalable billing framework rather than a drop in productivity.
+
+In other words, the change in revenue/hour is largely explained by billing mechanics — not a change in efficiency.
+
+---
+
+### 4. Utilization Performance Relative to Target
+
+The utilization goal of 17.5 client hours per week (≈75.8 hours per month) translates to a utilization benchmark of roughly 47% under a 160-hour monthly baseline.
+
+From late 2023 through 2024, utilization consistently exceeds this benchmark, often reaching 55–65%. This indicates strong schedule density and sustained client engagement.
+
+Periods below the goal align with lower total revenue months, confirming the relationship between client hours and financial output.
+
+---
+
+### Overall Interpretation
+
+Across all four metrics, performance stabilizes after mid-2023 with:
+
+- Consistent client hours above target
+- Revenue regularly exceeding monthly goal
+- A normalized revenue per hour after billing standardization
+- Utilization sustained above benchmark levels
+
+The combined analysis demonstrates that long-term revenue performance is driven primarily by client-hour volume and sustained utilization, rather than rate fluctuations alone.
 
 ---
 
