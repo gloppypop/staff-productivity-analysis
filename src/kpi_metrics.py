@@ -52,55 +52,98 @@ def compute_monthly_kpis(encounters_with_revenue: pd.DataFrame) -> pd.DataFrame:
     return monthly
 
 
-def save_plots(monthly_kpis: pd.DataFrame, out_dir: str | Path = "outputs") -> None:
+def save_plots(
+    monthly_kpis: pd.DataFrame,
+    out_dir: str | Path = "outputs",
+    revenue_goal: float | None = None,
+    utilization_goal: float | None = None,
+) -> None:
     """
     Saves plots into outputs/.
+    Optional:
+    - revenue_goal (float): horizontal goal line for revenue
+    - utilization_goal (float): horizontal goal line for utilization
     """
+    from matplotlib.ticker import FuncFormatter
+    import matplotlib.dates as mdates
+
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     df = monthly_kpis.copy()
 
-    # 1) Revenue trend
-    plt.figure()
-    plt.plot(df["month"], df["revenue"], marker="o")
-    plt.title("Monthly Revenue")
-    plt.xlabel("Month")
-    plt.ylabel("Revenue")
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(out_dir / "revenue_trends.png", dpi=200)
-    plt.close()
+    currency_fmt = FuncFormatter(lambda x, pos: f"${x:,.0f}")
+    month_locator = mdates.MonthLocator(interval=1)
+    month_fmt = mdates.DateFormatter("%Y-%m")
 
-    # 2) Client hours trend
-    plt.figure()
-    plt.plot(df["month"], df["client_hours"], marker="o")
-    plt.title("Monthly Client Hours")
-    plt.xlabel("Month")
-    plt.ylabel("Client Hours")
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(out_dir / "client_hours_trends.png", dpi=200)
-    plt.close()
+    def prettify(ax, y_is_currency=False):
+        ax.grid(True, linestyle="--", linewidth=0.6, alpha=0.4)
+        ax.xaxis.set_major_locator(month_locator)
+        ax.xaxis.set_major_formatter(month_fmt)
+        ax.tick_params(axis="x", rotation=45)
+        if y_is_currency:
+            ax.yaxis.set_major_formatter(currency_fmt)
 
-    # 3) Revenue per hour
-    plt.figure()
-    plt.plot(df["month"], df["revenue_per_hour"], marker="o")
-    plt.title("Revenue per Client Hour")
-    plt.xlabel("Month")
-    plt.ylabel("Revenue / Hour")
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(out_dir / "revenue_per_hour.png", dpi=200)
-    plt.close()
+    # 1) Revenue Trend
+    fig, ax = plt.subplots()
+    ax.plot(df["month"], df["revenue"], marker="o", linewidth=1.8)
+    ax.set_title("Monthly Revenue")
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Revenue")
+    prettify(ax, y_is_currency=True)
 
-    # 4) Utilization rate
-    plt.figure()
-    plt.plot(df["month"], df["utilization_rate"], marker="o")
-    plt.title("Utilization Rate")
-    plt.xlabel("Month")
-    plt.ylabel("Utilization (Client Hours / 160)")
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig(out_dir / "utilization_rate.png", dpi=200)
-    plt.close()
+    if revenue_goal is not None:
+        ax.axhline(
+            revenue_goal,
+            linestyle="--",
+            linewidth=1.5,
+            label="Revenue Goal",
+        )
+        ax.legend()
+
+    fig.tight_layout()
+    fig.savefig(out_dir / "revenue_trends.png", dpi=220)
+    plt.close(fig)
+
+    # 2) Client Hours
+    fig, ax = plt.subplots()
+    ax.plot(df["month"], df["client_hours"], marker="o", linewidth=1.8)
+    ax.set_title("Monthly Client Hours")
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Client Hours")
+    prettify(ax)
+    fig.tight_layout()
+    fig.savefig(out_dir / "client_hours_trends.png", dpi=220)
+    plt.close(fig)
+
+    # 3) Utilization Rate
+    fig, ax = plt.subplots()
+    ax.plot(df["month"], df["utilization_rate"], marker="o", linewidth=1.8)
+    ax.set_title("Utilization Rate")
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Utilization (Client Hours / 160)")
+    prettify(ax)
+
+    if utilization_goal is not None:
+        ax.axhline(
+            utilization_goal,
+            linestyle="--",
+            linewidth=1.5,
+            label="Utilization Goal",
+        )
+        ax.legend()
+
+    fig.tight_layout()
+    fig.savefig(out_dir / "utilization_rate.png", dpi=220)
+    plt.close(fig)
+
+    # 4) Encounter Volume
+    fig, ax = plt.subplots()
+    ax.plot(df["month"], df["encounters"], marker="o", linewidth=1.8)
+    ax.set_title("Monthly Encounter Volume")
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Encounters")
+    prettify(ax)
+    fig.tight_layout()
+    fig.savefig(out_dir / "encounter_volume.png", dpi=220)
+    plt.close(fig)
