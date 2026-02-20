@@ -77,8 +77,8 @@ The following visualizations are generated from the KPI notebook and saved in th
 ### Monthly Client Hours
 ![Monthly Client Hours](outputs/client_hours_trends.png)
 
-### Revenue per Client Hour
-![Revenue per Client Hour](outputs/revenue_per_hour.png)
+### Encounter Volume
+![Encounter Volume](outputs/encounter_volume.png)
 
 ### Utilization Rate
 ![Utilization Rate](outputs/utilization_rate.png)
