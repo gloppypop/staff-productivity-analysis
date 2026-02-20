@@ -95,19 +95,21 @@ Revenue dips in early and late periods correspond directly with reduced client h
 
 ### 2. Sustained Increase in Client Hours
 
-Client hours show a clear ramp-up from approximately 30–50 hours per month early in the timeline to a sustained 85–105 hour range. This indicates a significant improvement in utilization and schedule density.
+Client hours show a clear ramp-up from approximately 30-50 hours per month early in the timeline to a sustained 85-105 hour range. This indicates a significant improvement in utilization and schedule density.
 
 The temporary decline in the most recent month corresponds with a drop in revenue and utilization, reinforcing that hours delivered are the main performance driver.
 
 ---
 
-### 3. Revenue per Client Hour Reflects Billing Structure Changes
+### 3. Encounter Volume Reflects Workflow and Billing Structure Changes
 
-The early spike in revenue per client hour (over $150/hour) is not purely a productivity effect. During that period, services were billed under an older T1012 structure at approximately $50 per encounter. Because multiple encounters could be delivered within a single hour — and those encounters did not accumulate over 15-minute billing intervals — the effective revenue per hour appeared artificially elevated.
+Monthly encounter volume shows a distinct shift in mid-2023. Early months display a much higher number of encounters per month, followed by a noticeable drop and stabilization.
 
-After August 2023, billing shifted to a structure based on 15-minute units with cumulative billing rates. Under this model, revenue per hour stabilized in the ~$100–$110 range. This reflects a more consistent and scalable billing framework rather than a drop in productivity.
+This pattern aligns with a billing structure transition. Under the older T1012 model (approximately $50 per encounter), multiple encounters could be delivered within a single hour. Because billing did not accumulate across 15-minute intervals, providers often recorded more discrete encounters within the same block of time.
 
-In other words, the change in revenue/hour is largely explained by billing mechanics — not a change in efficiency.
+After August 2023, billing shifted to a cumulative 15-minute unit structure. Under this model, services are billed based on time increments rather than discrete per-encounter counts. As a result, encounter counts decreased while client hours and total revenue remained strong.
+
+In other words, the decline in encounter volume reflects a change in documentation and billing mechanics - not a reduction in productivity.
 
 ---
 
