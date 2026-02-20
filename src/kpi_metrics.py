@@ -1,6 +1,6 @@
 # src/kpi_metrics.py
-# Basic KPI calculations + a couple plots.
-# Nothing fancy — just clean and readable.
+# Basic KPI calculations + a few plots.
+# Kept simple on purpose.
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ def compute_monthly_kpis(encounters_with_revenue: pd.DataFrame) -> pd.DataFrame:
     - encounter_date
     - duration_min
     - revenue
+
     Output: monthly KPI table.
     """
     df = encounters_with_revenue.copy()
@@ -23,9 +24,13 @@ def compute_monthly_kpis(encounters_with_revenue: pd.DataFrame) -> pd.DataFrame:
     df["encounter_date"] = pd.to_datetime(df["encounter_date"], errors="coerce")
     df["duration_min"] = pd.to_numeric(df["duration_min"], errors="coerce")
 
+    # Drop rows with bad dates (shouldn't happen much after cleaning)
     df = df.dropna(subset=["encounter_date"])
+
+    # Month bucket for grouping
     df["month"] = df["encounter_date"].dt.to_period("M").dt.to_timestamp()
 
+    # Monthly totals
     monthly = (
         df.groupby("month", as_index=False)
         .agg(
@@ -36,16 +41,20 @@ def compute_monthly_kpis(encounters_with_revenue: pd.DataFrame) -> pd.DataFrame:
         .sort_values("month")
     )
 
-    # Simple extra metrics
+    # Extra KPIs
     monthly["revenue_per_hour"] = monthly["revenue"] / monthly["client_hours"]
     monthly["revenue_per_encounter"] = monthly["revenue"] / monthly["encounters"]
+
+    # Utilization rate (simple baseline)
+    # Assumption: 160 working hours per month for a full-time baseline
+    monthly["utilization_rate"] = monthly["client_hours"] / 160
 
     return monthly
 
 
 def save_plots(monthly_kpis: pd.DataFrame, out_dir: str | Path = "outputs") -> None:
     """
-    Saves a few plots to outputs/.
+    Saves plots into outputs/.
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -83,4 +92,15 @@ def save_plots(monthly_kpis: pd.DataFrame, out_dir: str | Path = "outputs") -> N
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.savefig(out_dir / "revenue_per_hour.png", dpi=200)
+    plt.close()
+
+    # 4) Utilization rate
+    plt.figure()
+    plt.plot(df["month"], df["utilization_rate"], marker="o")
+    plt.title("Utilization Rate")
+    plt.xlabel("Month")
+    plt.ylabel("Utilization (Client Hours / 160)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(out_dir / "utilization_rate.png", dpi=200)
     plt.close()

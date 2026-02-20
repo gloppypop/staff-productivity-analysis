@@ -80,6 +80,9 @@ The following visualizations are generated from the KPI notebook and saved in th
 ### Revenue per Client Hour
 ![Revenue per Client Hour](outputs/revenue_per_hour.png)
 
+### Utilization Rate
+![Utilization Rate](outputs/utilization_rate.png)
+
 ## Key Insights
 
 - Monthly revenue tracks closely with client hours, confirming that billable productivity drives financial performance.
