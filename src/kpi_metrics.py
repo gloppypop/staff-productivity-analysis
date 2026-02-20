@@ -81,10 +81,16 @@ def save_plots(
     month_fmt = mdates.DateFormatter("%Y-%m")
 
     def prettify(ax, y_is_currency=False):
-        ax.grid(True, linestyle="--", linewidth=0.6, alpha=0.4)
+        # Force grid on
+        ax.grid(True, which="major", linestyle="--", linewidth=0.6, alpha=0.5)
+        ax.set_axisbelow(True)  # grid stays behind lines
+
+        # Improve x-axis formatting
         ax.xaxis.set_major_locator(month_locator)
         ax.xaxis.set_major_formatter(month_fmt)
         ax.tick_params(axis="x", rotation=45)
+
+        # Currency formatting
         if y_is_currency:
             ax.yaxis.set_major_formatter(currency_fmt)
 
