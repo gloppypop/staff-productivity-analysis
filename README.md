@@ -1,5 +1,9 @@
 # Staff Productivity Analysis (KPI + Revenue Modeling)
 
+## Executive Summary
+
+This project shows how encounter-level service logs can be turned into monthly productivity and financial KPIs. The pipeline cleans raw data, converts time-based services into billable units, applies fiscal-year rate tables, and aggregates results into monthly trends. The end result is a reusable framework for evaluating provider productivity, revenue contribution, and utilization.
+
 This project analyzes encounter-level service data to measure provider productivity, client engagement, and revenue contribution over time.
 
 It demonstrates how operational service logs can be transformed into business-focused KPIs for performance evaluation and financial decision-making.
@@ -75,6 +79,13 @@ The following visualizations are generated from the KPI notebook and saved in th
 
 ### Revenue per Client Hour
 ![Revenue per Client Hour](outputs/revenue_per_hour.png)
+
+## Key Insights
+
+- Monthly revenue tracks closely with client hours, confirming that billable productivity drives financial performance.
+- Revenue per client hour remains relatively stable across months, suggesting consistent service mix and billing structure.
+- Revenue dips are primarily driven by lower encounter volume rather than changes in billing rates.
+- This KPI framework provides a structured way to evaluate compensation changes against measurable revenue contribution.
 
 ---
 
