@@ -184,6 +184,7 @@ pip install -r requirements.txt
 - pandas
 - numpy
 - matplotlib
+- seaborn
 - Jupyter Notebook
 
 ---

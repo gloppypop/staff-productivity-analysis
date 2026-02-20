@@ -7,6 +7,10 @@ from __future__ import annotations
 from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+
+# seaborn styling
+sns.set_theme(style="whitegrid")
 
 
 def compute_monthly_kpis(encounters_with_revenue: pd.DataFrame) -> pd.DataFrame:
