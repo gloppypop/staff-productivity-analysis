@@ -4,7 +4,7 @@
 
 This project shows how encounter-level service logs can be turned into monthly productivity and financial KPIs. The pipeline cleans raw data, converts time-based services into billable units, applies fiscal-year rate tables, and aggregates results into monthly trends. The end result is a reusable framework for evaluating provider productivity, revenue contribution, and utilization.
 
-This project analyzes encounter-level service data to measure provider productivity, client engagement, and revenue contribution over time.
+This project analyzes encounter-level service data __from a single provider__ to measure provider productivity, client engagement, and revenue contribution over time.
 
 It demonstrates how operational service logs can be transformed into business-focused KPIs for performance evaluation and financial decision-making.
 
@@ -14,13 +14,12 @@ It demonstrates how operational service logs can be transformed into business-fo
 
 ## Business Objective
 
-Given encounter-level service logs, this project answers:
+Given encounter-level service logs from a single provider, this project answers:
 
-- How many direct client hours were delivered each month?
 - How much revenue was generated each month?
+- How many direct client hours were delivered each month?
 - How do productivity and revenue trend over time?
-- What is revenue per client hour?
-- What is the financial impact of a proposed compensation adjustment?
+- How did the provider perform compared to a set utilization standard?
 
 ---
 
